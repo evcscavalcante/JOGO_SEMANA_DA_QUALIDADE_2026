@@ -49,3 +49,11 @@ Em desktop com pelo menos 1024 px de largura e 680 px de altura, as telas de int
 Telas pequenas, zoom alto e orientação retrato mantêm rolagem quando necessária, sem ocultar dados dos tickets nem campos. O painel de organização e a tabela de resultados preservam rolagem própria para acesso a todas as funções. Na impressão, os banners e a estrutura de tela cheia ficam desativados e somente o ticket permanece visível.
 
 O armazenamento `localStorage`, a versão do banco de dados, o cálculo de chance de ganhar, a roleta, os sons e os tickets não foram alterados. O service worker usa o cache `missao-qualidade-salum-vale-v4-tela-cheia`: abra o jogo **com internet** para receber a atualização antes de usá-lo offline.
+
+## Identidade visual no topo e rodapé (v5)
+
+As antigas faixas laterais com logos rotacionados foram substituídas por **duas faixas horizontais compactas** nas bordas da tela: **Salum Construções no topo** e **Vale no rodapé**, com as marcas na orientação original. Em telas desktop (a partir de 1024 px de largura e 680 px de altura), o centro mantém o formulário e a apresentação lado a lado e preserva o modo de tela cheia sem rolagem da página principal. Os logos duplicados no cabeçalho ficam ocultos apenas neste layout; seguem presentes na roleta e nos tickets.
+
+Em celulares ou janelas pequenas, as faixas decorativas ficam ocultas e as marcas continuam no cabeçalho. Os formulários, resultados e tickets preservam rolagem quando não couberem. O banco de perguntas, as chances de sorteio, a música, a voz e o armazenamento local não mudaram.
+
+Cache offline: `missao-qualidade-salum-vale-v5-faixas-horizontais`. Para receber a alteração em um aparelho com cache antigo, abra o endereço **online** e recarregue a página (uma segunda atualização pode ser necessária após a instalação do novo service worker).
