@@ -25,3 +25,11 @@ Não precisa de Firebase, servidor, API nem GitHub Actions customizadas.
 ## Backup
 
 **Organização → Segurança e backup → Exportar backup (.json)**. Para voltar aos dados, use **Restaurar backup**. Os dados de URLs `file://` anteriores não migram automaticamente para a origem `github.io`; importe um backup antes de continuar um evento existente.
+
+## Banco de perguntas (11/11/2026)
+
+O jogo possui **41 perguntas**: 12 originais e 29 diferentes extraídas das cinco fotografias enviadas para a Semana da Qualidade. Fotos repetidas foram desconsideradas. Em cada partida são sorteadas três questões diferentes, e as opções são embaralhadas.
+
+Consulte [PERGUNTAS_CADASTRADAS.md](./PERGUNTAS_CADASTRADAS.md) para ver as novas perguntas e os gabaritos. Algumas alternativas encobertas por reflexos nas fotos foram reconstituídas mantendo os gabaritos informados. A periodicidade de verificação de trenas e níveis citada em um cartão deve ser confirmada no plano da obra, não tratada como regra universal.
+
+A versão do cache offline foi atualizada para `missao-qualidade-salum-vale-v2-perguntas`. Acesse o site com internet para receber a versão nova; dados já salvos no navegador permanecem no mesmo armazenamento local.
