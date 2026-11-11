@@ -41,3 +41,11 @@ O sorteio agora é apresentado em uma **roleta animada com os logotipos oficiais
 Após clicar em **Girar a roleta**, o navegador reproduz música curta de suspense e efeitos sintetizados com Web Audio. Ao concluir, anuncia em voz de português (pt-BR) frases de vitória ou não vitória usando a API `speechSynthesis`, com botão **Repetir anúncio em áudio** na tela de resultado. Existe controle **Som e voz ligados/desligados** e preferência local no navegador. A trilha é original, sintetizada e não depende de rede. **A voz depende da disponibilidade de vozes no sistema/navegador:** em alguns aparelhos a fala pode não funcionar sem internet; o resultado e o ticket continuam visíveis. Respeita preferência de movimento reduzido.
  
 Atualize o jogo pelo endereço publicado **com internet** ao menos uma vez para instalar o novo cache `missao-qualidade-salum-vale-v3-roleta-audio`. O localStorage anterior e os tickets existentes não são apagados pela atualização.
+
+## Layout de evento em tela cheia (v4)
+
+Em desktop com pelo menos 1024 px de largura e 680 px de altura, as telas de introdução, perguntas, roleta e resultado foram organizadas para ocupar a área disponível com menos rolagem: formulário junto à apresentação, quiz com espaçamento compacto, roleta em duas colunas e ticket ao lado do anúncio. Em telas grandes (largura mínima de 1450 px e altura de 700 px), aparecem dois banners verticais com os logotipos **originais** Salum (esquerda) e Vale (direita), compartilhando as mesmas imagens locais incorporadas ao jogo. Não é necessário baixar imagens externas.
+
+Telas pequenas, zoom alto e orientação retrato mantêm rolagem quando necessária, sem ocultar dados dos tickets nem campos. O painel de organização e a tabela de resultados preservam rolagem própria para acesso a todas as funções. Na impressão, os banners e a estrutura de tela cheia ficam desativados e somente o ticket permanece visível.
+
+O armazenamento `localStorage`, a versão do banco de dados, o cálculo de chance de ganhar, a roleta, os sons e os tickets não foram alterados. O service worker usa o cache `missao-qualidade-salum-vale-v4-tela-cheia`: abra o jogo **com internet** para receber a atualização antes de usá-lo offline.
