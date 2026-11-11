@@ -326,7 +326,7 @@ body{background:radial-gradient(ellipse 56% 42% at 86% 8%,#005d5d5c,transparent 
  <div class="panel"><div class="sectionhead"><h2>Registro de participações</h2><input id="searchRecord" type="text" oninput="renderHistory()" placeholder="Buscar nome, matrícula ou ticket" style="max-width:280px"></div><div class="table-scroll"><table><thead><tr><th>Participante</th><th>Resultado</th><th>Prêmio / ticket</th><th>Entrega</th></tr></thead><tbody id="historyTable"></tbody></table></div></div>
 </section>
 </main>
-<div class="footer"><span id="connectionStatus" aria-live="polite">Verificando conexão...</span> · Dados e tickets salvos apenas neste navegador · Semana da Qualidade · Salum Construções | Obra Vale · Qualidade: Impulsionando o Desempenho</div>
+<div class="footer"><span id="connectionStatus" aria-live="polite">Verificando conexão...</span> · Dados e tickets salvos apenas neste navegador · Interface v6 · Semana da Qualidade · Salum Construções | Obra Vale · Qualidade: Impulsionando o Desempenho</div>
 </div>
  <aside class="edge-band edge-band-vale" aria-label="Faixa inferior Vale">
   <span class="edge-meta">OBRA VALE</span>
@@ -549,8 +549,19 @@ updateHint();
  window.addEventListener('offline',status);
  status();
  if('serviceWorker' in navigator){
+   let refreshedForUpdate = false;
+   navigator.serviceWorker.addEventListener('controllerchange',()=>{
+     // Não interromper participantes no meio das perguntas/sorteio.
+     const intro = document.getElementById('screen-intro');
+     if (!refreshedForUpdate && navigator.onLine && intro?.classList.contains('active')) {
+       refreshedForUpdate = true;
+       window.location.reload();
+     }
+   });
    window.addEventListener('load',()=>{
-     navigator.serviceWorker.register('./sw.js',{scope:'./'}).then(reg=>reg.update().catch(()=>{})).catch(err=>console.warn('Cache offline indisponível',err));
+     navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'})
+       .then(reg=>reg.update().catch(()=>{}))
+       .catch(err=>console.warn('Cache offline indisponível',err));
    });
  }
 })();
