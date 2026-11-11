@@ -1,5 +1,5 @@
 /* Missão Qualidade 2026. Arquivos estáticos: sem envio de dados do evento. */
-const CACHE_NAME = 'missao-qualidade-salum-vale-v2-perguntas';
+const CACHE_NAME = 'missao-qualidade-salum-vale-v3-roleta-audio';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
