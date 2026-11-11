@@ -33,3 +33,11 @@ O jogo possui **41 perguntas**: 12 originais e 29 diferentes extraídas das cinc
 Consulte [PERGUNTAS_CADASTRADAS.md](./PERGUNTAS_CADASTRADAS.md) para ver as novas perguntas e os gabaritos. Algumas alternativas encobertas por reflexos nas fotos foram reconstituídas mantendo os gabaritos informados. A periodicidade de verificação de trenas e níveis citada em um cartão deve ser confirmada no plano da obra, não tratada como regra universal.
 
 A versão do cache offline foi atualizada para `missao-qualidade-salum-vale-v2-perguntas`. Acesse o site com internet para receber a versão nova; dados já salvos no navegador permanecem no mesmo armazenamento local.
+
+## Roleta da Qualidade (v3)
+ 
+O sorteio agora é apresentado em uma **roleta animada com os logotipos oficiais Salum Construções e Vale alternados**, usando as imagens incorporadas ao HTML. A roleta é visual: a probabilidade real permanece `winChance` (%) e, havendo vitória, o prêmio é selecionado proporcionalmente à quantidade restante em estoque; a posição dos logos na roleta **não determina** se alguém ganhou.
+ 
+Após clicar em **Girar a roleta**, o navegador reproduz música curta de suspense e efeitos sintetizados com Web Audio. Ao concluir, anuncia em voz de português (pt-BR) frases de vitória ou não vitória usando a API `speechSynthesis`, com botão **Repetir anúncio em áudio** na tela de resultado. Existe controle **Som e voz ligados/desligados** e preferência local no navegador. A trilha é original, sintetizada e não depende de rede. **A voz depende da disponibilidade de vozes no sistema/navegador:** em alguns aparelhos a fala pode não funcionar sem internet; o resultado e o ticket continuam visíveis. Respeita preferência de movimento reduzido.
+ 
+Atualize o jogo pelo endereço publicado **com internet** ao menos uma vez para instalar o novo cache `missao-qualidade-salum-vale-v3-roleta-audio`. O localStorage anterior e os tickets existentes não são apagados pela atualização.
