@@ -114,7 +114,7 @@ body{background:radial-gradient(ellipse 56% 42% at 86% 8%,#005d5d5c,transparent 
 
 /* Painel de evento em tela cheia. Mantém conteúdo legível e protege dispositivos pequenos. */
 .event-shell{min-height:100dvh;display:grid;grid-template-columns:minmax(0,1fr)}
-.side-rail{display:none}
+.edge-band{display:none}
 .result-summary{min-width:0}
 #screen-result>.ticket{min-width:0}
 @media (min-width:1024px) and (min-height:680px){
@@ -205,23 +205,43 @@ body{background:radial-gradient(ellipse 56% 42% at 86% 8%,#005d5d5c,transparent 
  /* Organização e resultados podem rolar: preserva todos os controles e as tabelas. */
  #view-admin.active,#view-history.active{display:block;overflow:auto;min-height:0;max-height:100%;padding:4px 4px 20px}
 }
-@media (min-width:1450px) and (min-height:700px){
- .event-shell{grid-template-columns:clamp(104px,9.2vw,150px) minmax(0,1fr) clamp(104px,9.2vw,150px);gap:10px;padding:9px}
- .event-shell>.container{height:calc(100dvh - 18px);padding:4px 8px 5px}
- .side-rail{display:flex;position:relative;min-width:0;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;border-radius:22px;background:linear-gradient(180deg,#0f3f60,#09233f 52%,#005e60);border:1px solid #3b7a8b;box-shadow:inset 0 0 45px #031e3788,0 12px 30px #0004}
- .side-rail:before{content:"";position:absolute;inset:14px 9px;border:1px solid #bbf3ee36;border-radius:14px;pointer-events:none}
- .side-rail-salum{background:linear-gradient(180deg,#183c7d,#0c244e 52%,#142a68)}
- .side-rail-vale{background:linear-gradient(180deg,#006d6e,#003d54 58%,#087c79)}
- .side-rail .rail-logo-card{display:flex;align-items:center;justify-content:center;flex:none;width:clamp(185px,23dvh,245px);min-height:85px;padding:16px 11px;background:#fff;border-radius:15px;box-shadow:0 13px 26px #00101a99;transform:rotate(-90deg);position:absolute;top:44%;left:50%;translate:-50% -50%}
- .side-rail-vale .rail-logo-card{transform:rotate(90deg)}
- .rail-logo-card img{width:100%;max-height:58px;object-fit:contain}
- .rail-top{position:absolute;top:29px;text-align:center;max-width:125px;font-size:.68rem;line-height:1.25;letter-spacing:.1em;color:#ebf8ff;font-weight:900}
- .rail-motto{position:absolute;bottom:50px;writing-mode:vertical-rl;transform:rotate(180deg);max-height:32%;font-size:.7rem;letter-spacing:.12em;color:#c4e3e9;font-weight:850}
- .side-rail-vale .rail-motto{transform:none}
- .rail-bottom{position:absolute;bottom:20px;color:#ffce65;font-weight:950;font-size:1.13rem;letter-spacing:.14em}
+
+/* Faixas horizontais discretas: marcas legíveis na orientação original. */
+@media (min-width:1024px) and (min-height:680px){
+ .event-shell{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:50px minmax(0,1fr) 50px;gap:5px;padding:5px 9px;height:100dvh;min-height:0;max-height:100dvh;overflow:hidden}
+ .event-shell>.container{grid-column:1;grid-row:2;justify-self:center;align-self:stretch;width:100%;height:100%;max-height:100%;min-height:0;min-width:0;max-width:1220px;overflow:hidden;padding:3px 16px 3px}
+ .edge-band{display:grid;align-items:center;grid-template-columns:minmax(160px,1fr) minmax(0,2fr) minmax(160px,1fr);gap:12px;min-height:0;width:100%;border-radius:13px;border:1px solid #3e6480;box-shadow:0 2px 12px #00101b50;overflow:hidden;padding:3px 16px}
+ .edge-band-salum{grid-row:1;grid-column:1;background:linear-gradient(90deg,#163778,#112b53 49%,#102943)}
+ .edge-band-vale{grid-row:3;grid-column:1;background:linear-gradient(90deg,#0e4555,#006d6f 53%,#074d5a)}
+ .edge-logo{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:9px;padding:4px 10px;width:146px;height:40px;max-width:100%}
+ .edge-logo img{width:100%;height:100%;object-fit:contain;display:block}
+ .edge-band-salum .edge-logo{justify-self:start}
+ .edge-band-vale .edge-logo{justify-self:end}
+ .edge-heading{color:#f3fbff;font-size:clamp(.72rem,1vw,.95rem);letter-spacing:.08em;text-align:center;font-weight:850;white-space:nowrap}
+ .edge-heading span{color:#ffd569}
+ .edge-meta{font-size:.69rem;letter-spacing:.12em;font-weight:850;color:#c2e9ee;white-space:nowrap}
+ .edge-band-salum .edge-meta{text-align:right}
+ .edge-band-vale .edge-meta{text-align:left}
+ .edge-band-vale .edge-heading{color:#fff2c7}
+ /* Evita duplicar as marcas, que continuam presentes na roleta e no ticket. */
+ .topbar .brand-logos{display:none}
+ .topbar .brand-mast{flex:1}
+ .topbar .mast-title{min-width:0}
+ .topbar .mast-title strong{font-size:.94rem}
+ .topbar .mast-title small{font-size:.7rem}
+ .topbar{min-height:48px;margin-bottom:5px}
+ #screen-intro.active{gap:clamp(14px,2.5vw,32px)}
+ .footer{margin:4px 0 0}
+}
+@media (min-width:1024px) and (max-height:760px) and (min-height:680px){
+ .event-shell{grid-template-rows:43px minmax(0,1fr) 43px;gap:4px;padding:4px 7px}
+ .edge-band{padding:2px 10px}
+ .edge-logo{height:35px;width:130px}
+ .topbar{min-height:42px}
+ #screen-intro .hero h1,#screen-intro h1{font-size:clamp(2.4rem,3.6vw,3.5rem)}
 }
 @media(max-width:1023px), (max-height:679px){
- .side-rail{display:none!important}
+ .edge-band{display:none!important}
  .event-shell{height:auto;min-height:100dvh;overflow:visible}
  body{overflow:auto}
  .hero .feature{display:none}
@@ -250,7 +270,7 @@ body{background:radial-gradient(ellipse 56% 42% at 86% 8%,#005d5d5c,transparent 
 }
 @media print{
  html,body,.event-shell,.event-shell>.container,main,#view-play,#screen-result.active{height:auto!important;max-height:none!important;min-height:0!important;overflow:visible!important;display:block!important;margin:0!important;padding:0!important;background:#fff!important;box-shadow:none!important}
- .side-rail{display:none!important}
+ .edge-band{display:none!important}
  #screen-result>.ticket:not(.hidden){display:block!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;max-width:none!important;max-height:none!important;overflow:visible!important;margin:0!important}
 }
 
@@ -258,9 +278,10 @@ body{background:radial-gradient(ellipse 56% 42% at 86% 8%,#005d5d5c,transparent 
 </head>
 <body>
 <div class="event-shell">
- <aside class="side-rail side-rail-salum" aria-label="Banner vertical Salum Construções">
-  <span class="rail-top">SEMANA DA QUALIDADE</span><div class="rail-logo-card"><img id="railSalumLogo" alt="Salum Construções"></div>
-  <span class="rail-motto">IMPULSIONANDO O DESEMPENHO</span><span class="rail-bottom">2026</span>
+ <aside class="edge-band edge-band-salum" aria-label="Faixa superior Salum Construções">
+  <div class="edge-logo"><img id="railSalumLogo" alt="Salum Construções"></div>
+  <strong class="edge-heading">SEMANA DA QUALIDADE <span>2026</span></strong>
+  <span class="edge-meta">SALUM CONSTRUÇÕES</span>
  </aside>
  <div class="container">
 <header class="topbar">
@@ -307,9 +328,10 @@ body{background:radial-gradient(ellipse 56% 42% at 86% 8%,#005d5d5c,transparent 
 </main>
 <div class="footer"><span id="connectionStatus" aria-live="polite">Verificando conexão...</span> · Dados e tickets salvos apenas neste navegador · Semana da Qualidade · Salum Construções | Obra Vale · Qualidade: Impulsionando o Desempenho</div>
 </div>
- <aside class="side-rail side-rail-vale" aria-label="Banner vertical Vale">
-  <span class="rail-top">SEMANA DA QUALIDADE</span><div class="rail-logo-card"><img id="railValeLogo" alt="Vale"></div>
-  <span class="rail-motto">IMPULSIONANDO O DESEMPENHO</span><span class="rail-bottom">2026</span>
+ <aside class="edge-band edge-band-vale" aria-label="Faixa inferior Vale">
+  <span class="edge-meta">OBRA VALE</span>
+  <strong class="edge-heading">QUALIDADE: IMPULSIONANDO O DESEMPENHO</strong>
+  <div class="edge-logo"><img id="railValeLogo" alt="Vale"></div>
  </aside>
 </div>
 <script>
